@@ -1,9 +1,13 @@
 # unoconv-api
 
-# Run - example
+# Build - exemple
+
+docker build -t convert:v1 .
+
+# Run - exemple
 
 ```sh
-$ docker run -d -p 80:3000 --name unoconv quay.io/kaufmann_r/unoconv-api
+$ docker run -d -p 8080:3000 convert:v1
 ```
 
 # Usage
