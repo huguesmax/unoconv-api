@@ -1,12 +1,18 @@
 FROM ubuntu:xenial
 
-MAINTAINER Rene Kaufmann <kaufmann.r@gmail.com>
+MAINTAINER HuguesMAX<huguesmax@gmail.com>
 
 ENV GOPATH /go
 ENV PATH $GOPATH/bin:/usr/local/go/bin:$PATH
 ENV GO15VENDOREXPERIMENT 1
 
-ADD . /go/src/github.com/HeavyHorst/unoconv-api
+ADD . /go/src/github.com/huguesmax/unoconv-api
+
+# Set the locale
+RUN locale-gen fr_FR.UTF-8  
+ENV LANG fr_FR.UTF-8  
+ENV LANGUAGE fr_FR:fr  
+ENV LC_ALL fr_FR.UTF-8  
 
 #Install unoconv
 RUN \
@@ -19,17 +25,12 @@ RUN \
 			gcc \
 			supervisor \
 			golang-go && \
-		go install github.com/HeavyHorst/unoconv-api && \
+		go install github.com/huguesmax/unoconv-api && \
         apt-get remove -y golang-go gcc && \
 	    apt-get autoremove -y && \
         apt-get clean && \
 	    rm -rf /var/lib/apt/lists/
 
-# Set the locale
-RUN locale-gen de_DE.UTF-8  
-ENV LANG de_DE.UTF-8  
-ENV LANGUAGE de_DE:de  
-ENV LC_ALL de_DE.UTF-8  
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
