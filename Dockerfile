@@ -9,7 +9,7 @@ ENV GO15VENDOREXPERIMENT 1
 ADD . /go/src/github.com/huguesmax/unoconv-api
 
 # Set the locale
-RUN locale-gen fr_FR.UTF-8  
+
 ENV LANG fr_FR.UTF-8  
 ENV LANGUAGE fr_FR:fr  
 ENV LC_ALL fr_FR.UTF-8  
@@ -31,6 +31,7 @@ RUN \
         apt-get clean && \
 	    rm -rf /var/lib/apt/lists/
 
+RUN locale-gen fr_FR.UTF-8  
 
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
