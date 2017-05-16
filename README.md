@@ -22,6 +22,7 @@ Test health
 
 ```sh
 $ curl http://127.0.0.1:8080/convertPDF/health
+200 -OK
 ```
 
 Convert file
