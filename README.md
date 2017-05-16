@@ -1,8 +1,10 @@
 # unoconv-api
 
-# Build - exemple
+# Build v1 - exemple
 
-docker build -t convert:v1 .
+```sh
+$ docker build -t convert:v1 .
+```
 
 # Run - exemple
 
